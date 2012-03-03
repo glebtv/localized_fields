@@ -51,20 +51,24 @@ module LocalizedFields
     end
     
     def cktext_area(attribute, options = {})
+      if options[:input_html].nil?
+        options[:input_html] = {}
+      end
       if @options.has_key?(:language)
         language = @options[:language]
         
         translations = @object.send("#{attribute}_translations") || {}
         
         value = translations.has_key?(language.to_s) ? translations[language.to_s] : ""
+        # :value => value, 
         
-        options = options.merge(:value => value, :input_html => { :id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]"})
+        options[:input_html] = options[:input_html].merge(:id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]")
       else
-        value = @object ? @object[attribute.to_s] : nil
+        value = @object ? @object[attribute.to_s] : ""
         
-        options = options.merge(:value => value)
+        #options[:input_html] = options[:input_html].merge(:value => value)
       end
-      
+      options[:value] = ''
       super(attribute, options).html_safe
     end
   end
