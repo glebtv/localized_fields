@@ -69,6 +69,7 @@ module LocalizedFields
         #options[:input_html] = options[:input_html].merge(:value => value)
       end
       options[:value] = ''
+      options[:input_html] = options[:input_html].merge(:value => value)
       super(attribute, options).html_safe
     end
   end
