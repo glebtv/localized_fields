@@ -1,4 +1,4 @@
-# Localized Fields [![Build Status](https://secure.travis-ci.org/tiagogodinho/localized_fields.png)](http://travis-ci.org/tiagogodinho/localized_fields) [![Build Status](https://gemnasium.com/tiagogodinho/localized_fields.png?travis)](http://gemnasium.com/tiagogodinho/localized_fields)
+# Localized Fields [![Build Status](https://secure.travis-ci.org/tiagogodinho/localized_fields.png)](http://travis-ci.org/tiagogodinho/localized_fields) [![Build Status](https://gemnasium.com/tiagogodinho/localized_fields.png)](http://gemnasium.com/tiagogodinho/localized_fields) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/tiagogodinho/localized_fields)
 
 Helps you to create forms with localized fields using Mongoid.
 
@@ -6,15 +6,21 @@ Helps you to create forms with localized fields using Mongoid.
 
 Add this line to your application's Gemfile:
 
-    gem 'localized_fields'
+``` ruby
+gem 'localized_fields'
+```
 
 And then execute:
 
-    $ bundle
+``` terminal
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install localized_fields
+``` terminal
+gem install localized_fields
+```
 
 ## Usage
 
@@ -72,7 +78,7 @@ end
 
 ## Compatibility
 
-Localized Fiedls is tested against Ruby 1.8.7, 1.9.2, 1.9.3, REE and Rubinius.
+Localized Fields is tested against Ruby 1.9.3.
 
 ## Contributing
 
