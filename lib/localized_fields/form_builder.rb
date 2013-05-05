@@ -28,6 +28,20 @@ module LocalizedFields
       super(attribute, options).html_safe
     end
 
+    def cktext_area(attribute, options = {})
+      if @options.has_key?(:language)
+        language = @options[:language]
+        translations = @object.send("#{attribute}_translations") || {}
+        value = translations.has_key?(language.to_s) ? translations[language.to_s] : ""
+        options = options.merge(:id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]")
+      else
+        value = @object ? @object[attribute.to_s] : ""
+      end
+      options[:value] = value
+
+      super(attribute, options).html_safe
+    end
+
     private
 
     def create_field(attribute, options)
@@ -46,29 +60,6 @@ module LocalizedFields
       end
 
       return attribute, options
-    end
-    
-    def cktext_area(attribute, options = {})
-      if options[:input_html].nil?
-        options[:input_html] = {}
-      end
-      if @options.has_key?(:language)
-        language = @options[:language]
-        
-        translations = @object.send("#{attribute}_translations") || {}
-        
-        value = translations.has_key?(language.to_s) ? translations[language.to_s] : ""
-        # :value => value, 
-        
-        options[:input_html] = options[:input_html].merge(:id => "#{object_name}_#{attribute}_translations_#{language}", :name => "#{object_name}[#{attribute}_translations][#{language}]")
-      else
-        value = @object ? @object[attribute.to_s] : ""
-        
-        #options[:input_html] = options[:input_html].merge(:value => value)
-      end
-      options[:value] = ''
-      options[:input_html] = options[:input_html].merge(:value => value)
-      super(attribute, options).html_safe
     end
   end
 end
